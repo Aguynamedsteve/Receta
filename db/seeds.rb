@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+recipes = []
+15.times do
+  recipes << Recipe.create(
+    title: Faker::Lorem.words(rand(1..10)).join(" "), 
+    body: Faker::Lorem.paragraph(rand(1..4))
+  )
+end
+ 

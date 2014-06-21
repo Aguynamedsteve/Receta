@@ -14,6 +14,7 @@ end
 
 group :test, :development do
   gem 'pry-rails'
+  gem 'faker'
 end
 
 group :test do
