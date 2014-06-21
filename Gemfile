@@ -7,10 +7,16 @@ group :production do
 end
 
 group :development do
- gem 'sqlite3'
+  gem 'sqlite3'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test, :development do
+  gem 'pry-rails'
+end
+
+group :test do
   gem "rspec"
   gem "rspec-rails", "~> 2.0"
   gem "factory_girl_rails", "~> 4.0"
