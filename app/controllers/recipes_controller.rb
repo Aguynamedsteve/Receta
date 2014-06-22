@@ -13,7 +13,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(params.require(:recipe).permit(:title, :body))
-    
     if @recipe.save
       flash[:notice] = "Recipe #{@recipe.title} was successfully created."
       redirect_to @recipe
