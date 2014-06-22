@@ -1,0 +1,12 @@
+<h1>New Recipe<h1>
+
+
+  <div>
+    <%= form_for @recipe do |f| %>
+      Title: <%= f.text_field :title %><br />
+      Recipe: <%= f.text_field :body %><br />
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+  <%= link_to "Back", :back %>
