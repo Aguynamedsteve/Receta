@@ -1,7 +1,7 @@
 ##Receta
 
-![Build Status][BS img]][Build Status]
-![Coverage Status][CS img]][Coverage Status]
+![Build Status][BS img]
+![Coverage Status][CS img]
 
 
 Github meets AllRecipes
