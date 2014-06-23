@@ -32,4 +32,8 @@ require 'spec_helper'
       assigns[:recipe].title.should == "Egg Foo Yung"
     end
   end
+
+  describe "Recipes #edit" do
+        
+  end
 end  

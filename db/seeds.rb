@@ -9,7 +9,7 @@
 recipes = []
 15.times do
   recipes << Recipe.create(
-    title: Faker::Lorem.words(rand(1..10)).join(" "), 
+    title: Faker::Lorem.words(rand(1..3)).join(" "), 
     body: Faker::Lorem.paragraph(rand(1..4))
   )
 end
