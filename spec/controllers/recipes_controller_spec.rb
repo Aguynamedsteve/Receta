@@ -37,12 +37,21 @@ require 'spec_helper'
     end
   
     describe "Recipes#edit" do
-    
+      it "should find recipe by its id" do
+        @recipe = Recipe.create(title: "Empenadas")
+        get :show, :id => @recipe.id
+        assigns[:recipe].title.should == "Empenadas"
+      end
     end
 
     describe "Recipes#update" do
       before(:each) do
         @recipe = Recipe.create(:id => 1, :title => "Peach Pie", :body => "Bake at tree fiddy.")
+      end
+      
+      it "should find recipe by its id" do
+        get :show, :id => @recipe.id
+        assigns[:recipe].title.should == "Peach Pie"
       end
 
       it "allows a recipe to be updated" do
@@ -68,6 +77,13 @@ require 'spec_helper'
         assigns[:recipe].should_not be_new_record
         flash[:notice].should_not be_nil
         response.should redirect_to(recipes_path)
+      end
+    end
+
+    describe "Recipes#new" do
+      it "creates a new instance of the Recipe model" do
+        @recipe = Recipe.new
+        @recipe.should be_an_instance_of Recipe
       end
     end
   end  
