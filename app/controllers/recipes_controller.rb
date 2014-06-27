@@ -19,8 +19,7 @@ class RecipesController < ApplicationController
     else
       flash[:error] = "Error saving your recipe. Please try again."
       render :edit
-  end
-    
+    end
   end
 
   def new
@@ -34,6 +33,18 @@ class RecipesController < ApplicationController
       redirect_to @recipe
     else
       render :new
+    end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.destroy
+      flash[:notice] = "Recipe was deleted successfully."
+      redirect_to recipes_path
+    else
+      flash[:error] = "There was an error deleting the recipe."
+      render :show
     end
   end
 

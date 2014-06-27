@@ -18,7 +18,6 @@ require 'spec_helper'
     end
   
     describe "Recipe#create" do
-
       it "renders flash notice on successful save" do
         post :create, :recipe => {:title => "Egg Foo Yung"}
         flash[:notice].should_not be_blank
@@ -41,6 +40,12 @@ require 'spec_helper'
         @recipe = Recipe.create(title: "Empenadas")
         get :show, :id => @recipe.id
         assigns[:recipe].title.should == "Empenadas"
+      end
+
+      it "assigns the requested recipe as @recipe" do
+      recipe = Recipe.create(:id => 1, :title => "Peach Pie", :body => "Bake at tree fiddy.")
+      get :edit, :id => recipe.id.to_s
+      assigns(:recipe).should eq(recipe)
       end
     end
 
@@ -81,9 +86,37 @@ require 'spec_helper'
     end
 
     describe "Recipes#new" do
+      it "assigns a new recipe as @recipe" do
+      get :new
+      assigns(:recipe).should be_a_new(Recipe)
+      end
+
       it "creates a new instance of the Recipe model" do
         @recipe = Recipe.new
         @recipe.should be_an_instance_of Recipe
+      end
+    end
+
+    describe "Recipes#destroy" do
+      before :each do
+        @recipe = Recipe.create(:id => 1, :title => "Peach Pie", :body => "Bake at tree fiddy.")
+      end
+
+      it "destroys the requested recipe" do
+        expect { delete :destroy, :id => @recipe.id.to_s }.to change{ Recipe.count }.by(-1)
+      end
+  
+      it "redirects to the recipes list" do
+        delete :destroy, :id => @recipe.id.to_s
+        flash[:notice].should_not be_nil
+        response.should redirect_to(recipes_path)
+      end
+
+     it "should redirect_to recipes_path on failed destroy" do
+      delete :destroy, :id => @recipe.id.to_s
+     
+      flash[:notice].should_not be_nil
+      response.should redirect_to(recipes_path)
       end
     end
   end  
