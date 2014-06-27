@@ -43,8 +43,11 @@ class RecipesController < ApplicationController
       flash[:notice] = "Recipe was deleted successfully."
       redirect_to recipes_path
     else
-      flash[:error] = "There was an error deleting the recipe."
-      render :show
+      #Add these lines when code has 
+      #been added that prevents a destroy action.
+      #  
+      #flash[:error] = "There was an error deleting the recipe."
+      #redirect_to :show
     end
   end
 

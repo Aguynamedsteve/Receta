@@ -43,9 +43,9 @@ require 'spec_helper'
       end
 
       it "assigns the requested recipe as @recipe" do
-      recipe = Recipe.create(:id => 1, :title => "Peach Pie", :body => "Bake at tree fiddy.")
-      get :edit, :id => recipe.id.to_s
-      assigns(:recipe).should eq(recipe)
+        recipe = Recipe.create(:id => 1, :title => "Peach Pie", :body => "Bake at tree fiddy.")
+        get :edit, :id => recipe.id.to_s
+        assigns(:recipe).should eq(recipe)
       end
     end
 
@@ -87,8 +87,8 @@ require 'spec_helper'
 
     describe "Recipes#new" do
       it "assigns a new recipe as @recipe" do
-      get :new
-      assigns(:recipe).should be_a_new(Recipe)
+        get :new
+        assigns(:recipe).should be_a_new(Recipe)
       end
 
       it "creates a new instance of the Recipe model" do
@@ -111,12 +111,21 @@ require 'spec_helper'
         flash[:notice].should_not be_nil
         response.should redirect_to(recipes_path)
       end
-
-     it "should redirect_to recipes_path on failed destroy" do
-      delete :destroy, :id => @recipe.id.to_s
-     
-      flash[:notice].should_not be_nil
-      response.should redirect_to(recipes_path)
-      end
+      # Add the test below 
+      # when roles and
+      # authorizations have
+      # been added.
+      # Testing for a failed save
+      # without a real world 
+      # example of when a 
+      # destroy would fail is
+      # basically testing
+      # ActiveRecord. IMHO.
+      #it "should redirect_to recipes_path on failed destroy" do
+      #  delete :destroy, :id => @recipe.id.to_s 
+      #  
+      #  flash[:error].should_not be_nil
+      #  response.should redirect_to(:show)
+      #end
     end
   end  
