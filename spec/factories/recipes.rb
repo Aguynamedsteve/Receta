@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :recipe do |f|
-    f.title { Faker::word.title }  
-    f.body { Faker::paragraph.title }  
+    f.title "New York strip"
+    f.body "Meat, Heat, Eat."  
   end
 end
