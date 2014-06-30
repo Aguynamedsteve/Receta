@@ -30,12 +30,19 @@ body {
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
-  top: 0;
+  top: 10;
+  bottom:10;
   left: 0;
   right: 0;
   z-index: 10;
 }
 
+
+.navbar {
+  @elementHeight: 20px;
+  padding: ((@navbarHeight - @elementHeight) / 2 - 2) 20px ((@navbarHeight - @elementHeight) / 2 + 2);
+  line-height: 1;
+}
 
 
 /* CUSTOMIZE THE CAROUSEL
@@ -122,7 +129,7 @@ body {
 /* Footer
 -------------------------------------------------- */
 .footer {
-  position:relative;
+  position:fixed;
   width:80%;
   left:13%;
   right:10%;
