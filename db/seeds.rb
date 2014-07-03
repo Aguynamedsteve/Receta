@@ -13,4 +13,15 @@ recipes = []
     body: Faker::Lorem.paragraph(rand(1..4))
   )
 end
- 
+
+u = User.new(
+  username: 'Member User',
+  email: 'member@example.com', 
+  password: 'helloworld', 
+  password_confirmation: 'helloworld')
+u.skip_confirmation!
+u.save
+
+puts "Seed finished"
+puts "#{Recipe.count} recipes created"
+puts "#{User.count} users created"

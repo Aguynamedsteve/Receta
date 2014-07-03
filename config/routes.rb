@@ -1,5 +1,9 @@
 Receta::Application.routes.draw do
 
+  devise_for :users
+
+  resources :users, only: [:show, :index, :update]
+
   resources :recipes
 
   #resources :home, :only => [:index, :about, :contact]

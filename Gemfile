@@ -4,6 +4,7 @@ gem 'rails', '4.0.3'
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development do
@@ -28,6 +29,7 @@ group :test do
   gem 'growl'
 end
 
+gem 'devise'
 gem 'bootstrap-sass', '~> 3.2.0.0'
 gem 'bootstrap'
 gem 'sass-rails', '~> 4.0.0'
