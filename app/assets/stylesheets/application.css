@@ -95,13 +95,15 @@ body {
   height:30px;
   position:fixed;
   bottom:0;
-  text-align: center
+  text-align: center;
 }
 
 .content {
   position: fixed;
   padding-bottom: 30px;
 }
+
+
 
 article,
 aside,
