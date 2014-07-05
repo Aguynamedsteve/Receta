@@ -6,12 +6,21 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-recipes = []
 15.times do
-  recipes << Recipe.create(
-    title: Faker::Lorem.words(rand(1..3)).join(" "), 
-    body: Faker::Lorem.paragraph(rand(1..4))
-  )
+  password = Faker::Lorem.characters(10)
+  u = User.new(
+    username: Faker::Name.name, 
+    email: Faker::Internet.email, 
+    password: password, 
+    password_confirmation: password)
+  u.skip_confirmation!
+  u.save
+
+  recipes = []
+    recipes << u.recipes.create(
+      title: Faker::Lorem.words(rand(1..3)).join(" "), 
+      body: Faker::Lorem.paragraph(rand(1..4))
+    )
 end
 
 u = User.new(
