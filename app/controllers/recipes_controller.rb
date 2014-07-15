@@ -1,10 +1,13 @@
 class RecipesController < ApplicationController
+
   def index
     @recipes = Recipe.all
   end
 
+
   def show
     @recipe = Recipe.find(params[:id])
+    @user = current_user
   end
 
   def edit
@@ -43,15 +46,19 @@ class RecipesController < ApplicationController
       flash[:notice] = "Recipe was deleted successfully."
       redirect_to recipes_path
     else
-      #Add these lines when code has 
-      #been added that prevents a destroy action.
-      #  
       #flash[:error] = "There was an error deleting the recipe."
       #redirect_to :show
     end
   end
 
+###########################  PRIVATE  ############################################
+
   private
+  
+  def copy 
+    @copy = @recipe.dup
+    @user.recipes.create(@copy.attributes)
+  end
 
   def recipe_params
     params.require(:recipe).permit(:title, :body)

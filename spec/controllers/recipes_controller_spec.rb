@@ -15,6 +15,13 @@ require 'spec_helper'
         get :show, :id => @recipe.id
         assigns[:recipe].title.should == "Empenadas"
       end
+
+      it "should create an duplicate recipe" do
+        @recipe = Recipe.create(title: "Empenadas")
+        @copy = @recipe.dup
+        (@copy).should_not eq(@recipe)
+        (@copy.title).should eq(@recipe.title)
+      end
     end
   
     describe "Recipe#create" do
@@ -111,16 +118,7 @@ require 'spec_helper'
         flash[:notice].should_not be_nil
         response.should redirect_to(recipes_path)
       end
-      # Add the test below 
-      # when roles and
-      # authorizations have
-      # been added.
-      # Testing for a failed save
-      # without a real world 
-      # example of when a 
-      # destroy would fail is
-      # basically testing
-      # ActiveRecord. IMHO.
+
       #it "should redirect_to recipes_path on failed destroy" do
       #  delete :destroy, :id => @recipe.id.to_s 
       #  
@@ -128,4 +126,4 @@ require 'spec_helper'
       #  response.should redirect_to(:show)
       #end
     end
-  end  
+  end

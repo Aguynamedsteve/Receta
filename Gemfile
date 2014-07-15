@@ -28,6 +28,7 @@ group :test do
   gem "selenium-webdriver"
   gem 'guard-rspec'
   gem 'growl'
+  gem "nyan-cat-formatter"
 end
 
 gem 'devise'

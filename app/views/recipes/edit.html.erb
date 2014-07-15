@@ -1,3 +1,11 @@
 <h1><%= @recipe.title %></h1>
 
-<p>Insert edit form here</p>
+  <div>
+    <%= form_for @recipe do |f| %>
+      Title: <%= f.text_area :title %><br />
+      Recipe: <%= f.text_area :body %><br />
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+  <%= link_to "Back", :back %> | <%= link_to "Delete", method: :destroy %>

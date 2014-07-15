@@ -3,8 +3,8 @@
 
   <div>
     <%= form_for @recipe do |f| %>
-      Title: <%= f.text_field :title %><br />
-      Recipe: <%= f.text_field :body %><br />
+      Title: <%= f.text_area :title %><br />
+      Recipe: <%= f.text_area :body %><br />
       <%= f.submit %>
     <% end %>
   </div>

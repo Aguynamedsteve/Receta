@@ -4,7 +4,7 @@ Receta::Application.routes.draw do
 
   resources :users, only: [:show, :index, :update]
 
-  resources :recipes
+  resources :recipes 
 
   #resources :home, :only => [:index, :about, :contact]
   

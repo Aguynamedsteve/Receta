@@ -3,4 +3,4 @@
 <div><%= @recipe.body %></div>
 
 <br />
-<%= link_to 'Back', :back %> | <%= link_to 'Home', home_index_path %>
+<%= link_to 'Back', :back %> | <%= link_to 'Home', home_index_path %> | <%= link_to 'Edit', edit_recipe_path %> | <%= link_to "Copy", @recipe.copy %>
